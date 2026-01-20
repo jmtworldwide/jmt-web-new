@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Base styles
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: $font-sans;
+    color: $neutral-800;
+    background-color: $neutral-50;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $font-display;
+    font-weight: 600;
+    line-height: 1.2;
+    color: $neutral-900;
+  }
+
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+  h2 { font-size: clamp(1.75rem, 4vw, 2.75rem); }
+  h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+  h4 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color $transition-fast;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  ::selection {
+    background-color: $primary-400;
+    color: white;
+  }
+}
+
+// Component layer
+@layer components {
+  // Container
+  .container-custom {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  // Buttons
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-all duration-300;
+    
+    &-primary {
+      @apply bg-primary-400 text-white hover:bg-primary-500 shadow-soft hover:shadow-medium;
+      
+      &:active {
+        @apply transform scale-[0.98];
+      }
+    }
+    
+    &-secondary {
+      @apply bg-white text-primary-400 border-2 border-primary-400 hover:bg-primary-50;
+    }
+    
+    &-accent {
+      @apply bg-accent text-white hover:bg-accent-dark;
+    }
+    
+    &-ghost {
+      @apply text-primary-400 hover:bg-primary-50;
+    }
+  }
+
+  // Cards
+  .card {
+    @include card-base;
+    padding: $spacing-xl;
+  }
+
+  // Section spacing
+  .section {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  // Text styles
+  .text-gradient {
+    @include gradient-text;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  // Navigation link
+  .nav-link {
+    @apply relative px-4 py-2 text-neutral-600 hover:text-primary-400 transition-colors duration-200;
+    
+    &::after {
+      content: '';
+      @apply absolute bottom-0 left-1/2 w-0 h-0.5 bg-primary-400 transition-all duration-300 -translate-x-1/2;
+    }
+    
+    &:hover::after,
+    &.active::after {
+      @apply w-full;
+    }
+    
+    &.active {
+      @apply text-primary-400 font-medium;
+    }
+  }
+
+  // Hero section
+  .hero {
+    @apply relative min-h-screen flex items-center overflow-hidden;
+    
+    &-background {
+      @apply absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-primary-100;
+      
+      &::before {
+        content: '';
+        @apply absolute inset-0 bg-mesh-gradient opacity-50;
+      }
+    }
+    
+    &-content {
+      @apply relative z-10 container-custom;
+    }
+  }
+
+  // Service card
+  .service-card {
+    @apply relative p-8 bg-white rounded-2xl shadow-soft transition-all duration-500 overflow-hidden;
+    
+    &::before {
+      content: '';
+      @apply absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-400 to-accent transition-transform duration-500;
+      transform: translateX(-100%);
+    }
+    
+    &:hover {
+      @apply shadow-hard;
+      transform: translateY(-4px);
+      
+      &::before {
+        transform: translateX(0);
+      }
+    }
+    
+    &:hover &-icon {
+      @apply bg-primary-400 text-white;
+      transform: scale(1.1);
+    }
+    
+    &-icon {
+      @apply w-16 h-16 rounded-xl bg-primary-50 flex items-center justify-center mb-6 text-primary-400 text-2xl transition-all duration-300;
+    }
+    
+    &-title {
+      @apply text-xl font-semibold mb-3 text-neutral-900;
+    }
+    
+    &-description {
+      @apply text-neutral-500 leading-relaxed;
+    }
+  }
+
+  // Stats section
+  .stat-item {
+    @apply text-center p-6;
+    
+    &-number {
+      @apply text-4xl md:text-5xl font-bold text-primary-400 mb-2;
+    }
+    
+    &-label {
+      @apply text-neutral-500 uppercase tracking-wider text-sm;
+    }
+  }
+
+  // Feature list
+  .feature-list {
+    @apply space-y-4;
+    
+    &-item {
+      @apply flex items-start gap-4 p-4 rounded-lg hover:bg-primary-50 transition-colors duration-200;
+      
+      &-icon {
+        @apply w-8 h-8 rounded-full bg-primary-400 text-white flex items-center justify-center flex-shrink-0 mt-0.5;
+      }
+      
+      &-content {
+        @apply flex-1;
+        
+        h4 {
+          @apply text-lg font-semibold mb-1;
+        }
+        
+        p {
+          @apply text-neutral-500;
+        }
+      }
+    }
+  }
+}
+
+// Utility layer
+@layer utilities {
+  .animate-delay-100 { animation-delay: 100ms; }
+  .animate-delay-200 { animation-delay: 200ms; }
+  .animate-delay-300 { animation-delay: 300ms; }
+  .animate-delay-400 { animation-delay: 400ms; }
+  .animate-delay-500 { animation-delay: 500ms; }
+
+  .bg-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232579d8' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  .glass {
+    @apply bg-white/70 backdrop-blur-md;
+  }
+
+  .glass-dark {
+    @apply bg-neutral-900/70 backdrop-blur-md;
+  }
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $neutral-100;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $neutral-300;
+  border-radius: $radius-full;
+  
+  &:hover {
+    background: $neutral-400;
+  }
+}
+
+// Focus styles
+:focus-visible {
+  outline: 2px solid $primary-400;
+  outline-offset: 2px;
+}
+
+// Page transitions
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
