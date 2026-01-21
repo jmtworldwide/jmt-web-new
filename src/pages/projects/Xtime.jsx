@@ -27,6 +27,27 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { faJava, faAws } from '@fortawesome/free-brands-svg-icons'
 
+// Import images
+import heroImg from '@/assets/xtime/car-radio-listening-91028216.png'
+import laptopImg from '@/assets/xtime/HOLD_302159992_AR_-1_SPBBGGYHUIDW.png'
+import tabletImg from '@/assets/xtime/engage-tablet2_V2.png'
+import mobileImg from '@/assets/xtime/Xtime-Mobile.png'
+import gmlogo from '@/assets/xtime/GM-logo.png'
+import fordlogo from '@/assets/xtime/Ford_logo_flat.png'
+import nissanlogo from '@/assets/xtime/nissan_logo.png'
+import subarulogo from '@/assets/xtime/subaru.png'
+import bmwlogo from '@/assets/xtime/bmw.png'
+import toyotalogo from '@assets/xtime/toyota_logo.png'
+import cloudSolutionImg from '@/assets/xtime/Artboard.png'
+import projectAnalysisImg from '@/assets/xtime/inspect-prouct-hero-1.png'
+import finalDesignImg from '@/assets/xtime/final_design.png'
+import cloudMigrationImg from '@/assets/xtime/ipad-scheduling.png'
+import spectrumImg from '@/assets/xtime/xtime-spectrum-300px.png'
+import inviteImg from '@/assets/xtime/invite-2.png'
+import scheduleImg from '@/assets/xtime/schedule-1.png'
+import engageImg from '@/assets/xtime/engage-1.png'
+import inspectImg from '@/assets/xtime/inspect-2.png'
+
 const Xtime = () => {
   const [activeTab, setActiveTab] = useState('about')
 
@@ -46,8 +67,23 @@ const Xtime = () => {
     { id: 'why', label: 'Why choose us?' }
   ]
 
-  // OE Brands
-  const brands = ['GM', 'Ford', 'Nissan', 'Subaru', 'Toyota']
+
+  // OE Brands - combine name and logo in one array of objects
+  const brands = [
+    { name: 'GM', logo: gmlogo },
+    { name: 'BMW', logo: bmwlogo },
+    { name: 'Nissan', logo: nissanlogo },
+    { name: 'Subaru', logo: subarulogo },
+    { name: 'Toyota', logo: toyotalogo }
+  ]
+
+  // Products
+  const products = [
+    { name: 'INVITE', logo: inviteImg, icon: faBell, color: 'border-blue-500 text-blue-500', bgColor: 'bg-blue-50', features: ['Dashboard', 'Notifications', 'Service Reminders'] },
+    { name: 'SCHEDULE', logo: scheduleImg, icon: faCalendarAlt, color: 'border-amber-500 text-amber-500', bgColor: 'bg-amber-50', features: ['Online Scheduling', 'Mobile Scheduling', 'Dealer Scheduling', 'Call Center Scheduling', 'Menu pricing', 'Ride Sharing'] },
+    { name: 'ENGAGE', logo: engageImg, icon: faComments, color: 'border-green-500 text-green-500', bgColor: 'bg-green-50', features: ['Tablet Reception', 'Texting', 'Walk-around', 'Vehicle Check-in', 'Add-ons Detailing', 'Diagnostics'] },
+    { name: 'INSPECT', logo: inspectImg, icon: faSearch, color: 'border-red-500 text-red-500', bgColor: 'bg-red-50', features: ['Vehicle Inspection', 'Service History', 'Recalls', 'Tires', 'Service Reminders'] }
+  ]
 
   // Success points for Cloud-based Solution
   const cloudSuccessPoints = [
@@ -126,28 +162,28 @@ const Xtime = () => {
   const spectrumProducts = [
     {
       name: 'INVITE',
-      icon: faBell,
+      logo: inviteImg,
       color: 'border-blue-500 text-blue-500',
       bgColor: 'bg-blue-50',
       features: ['Dashboard', 'Notifications', 'Service Reminders']
     },
     {
       name: 'SCHEDULE',
-      icon: faCalendarAlt,
+      logo: scheduleImg,
       color: 'border-amber-500 text-amber-500',
       bgColor: 'bg-amber-50',
       features: ['Online Scheduling', 'Mobile Scheduling', 'Dealer Scheduling', 'Call Center Scheduling', 'Menu pricing', 'Ride Sharing']
     },
     {
       name: 'ENGAGE',
-      icon: faComments,
+      logo: engageImg,
       color: 'border-green-500 text-green-500',
       bgColor: 'bg-green-50',
       features: ['Tablet Reception', 'Texting', 'Walk-around', 'Vehicle Check-in', 'Add-ons Detailing', 'Diagnostics']
     },
     {
       name: 'INSPECT',
-      icon: faSearch,
+      logo: inspectImg,
       color: 'border-red-500 text-red-500',
       bgColor: 'bg-red-50',
       features: ['Inspection Dashboard', 'Dealership Chat', 'Multi-point Inspection', 'Enhanced Multimedia', 'Online Approvals', 'Service Tracker']
@@ -230,11 +266,17 @@ const Xtime = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-[400px] bg-gradient-to-br from-slate-800 via-slate-700 to-slate-900 overflow-hidden">
+      <section className="relative min-h-[400px] bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
         {/* Background Image - Car Dashboard */}
-        <div className="absolute inset-0 bg-[url('/assets/xtime/hero-bg.jpg')] bg-cover bg-center opacity-40"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 to-slate-900/40"></div>
-
+        <div className="absolute inset-0 bg-[url('/assets/xtime/hero-bg.jpg')] bg-cover bg-center opacity-60">
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/95 to-slate-900/90">
+            <img
+              src={heroImg}
+              alt="Count on us"
+              className="w-full h-auto"
+            />
+          </div>
+        </div>
         <div className="container-custom relative z-10 py-20 md:py-28">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -244,7 +286,14 @@ const Xtime = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Xtime
             </h1>
-            <p className="text-xl text-slate-300 max-w-4xl leading-relaxed">
+
+            {/* Mobile text - visible only on small screens, hidden on md and above */}
+            <p className="text-xl text-slate-300 max-w-4xl leading-relaxed block md:hidden">
+              Technical Management of SaaS Implementation
+            </p>
+
+            {/* Desktop text - hidden on small screens, visible on md and above */}
+            <p className="text-xl text-slate-300 max-w-4xl leading-relaxed hidden md:block">
               Technical Management and Implementation of SaaS Based Solutions for Automotive industry OEs across North America and Australia
             </p>
           </motion.div>
@@ -258,11 +307,10 @@ const Xtime = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`px-6 py-4 text-sm font-medium transition-all duration-300 border-b-2 ${
-                    activeTab === tab.id
-                      ? 'text-primary-500 border-primary-500'
-                      : 'text-neutral-500 border-transparent hover:text-primary-500'
-                  }`}
+                  className={`px-6 py-4 text-sm font-medium transition-all duration-300 border-b-2 ${activeTab === tab.id
+                    ? 'text-primary-500 border-primary-500'
+                    : 'text-neutral-500 border-transparent hover:text-primary-500'
+                    }`}
                 >
                   {tab.label}
                 </button>
@@ -291,9 +339,13 @@ const Xtime = () => {
                 {brands.map((brand, index) => (
                   <div
                     key={index}
-                    className="px-4 py-2 bg-neutral-100 rounded-lg text-neutral-700 font-medium text-sm"
+                    className="px-4 py-2 bg-neutral-100 rounded-lg"
                   >
-                    {brand}
+                    <img
+                      src={brand.logo}
+                      alt={brand.name}
+                      className="h-8 w-auto object-contain"
+                    />
                   </div>
                 ))}
                 <span className="text-neutral-500 text-sm">And More....</span>
@@ -316,43 +368,29 @@ const Xtime = () => {
                 <div className="flex items-end justify-center gap-4">
                   {/* Laptop */}
                   <div className="w-64 h-44 bg-white rounded-lg shadow-xl overflow-hidden border border-neutral-200">
-                    <div className="h-6 bg-neutral-100 flex items-center px-2 gap-1">
-                      <div className="w-2 h-2 rounded-full bg-red-400"></div>
-                      <div className="w-2 h-2 rounded-full bg-yellow-400"></div>
-                      <div className="w-2 h-2 rounded-full bg-green-400"></div>
-                    </div>
-                    <div className="p-2">
-                      <div className="text-[8px] text-primary-500 font-bold mb-1">∞xtime</div>
-                      <div className="h-2 bg-neutral-100 rounded mb-1"></div>
-                      <div className="h-2 bg-primary-100 rounded w-3/4 mb-1"></div>
-                      <div className="grid grid-cols-3 gap-1 mt-2">
-                        <div className="h-8 bg-blue-100 rounded"></div>
-                        <div className="h-8 bg-green-100 rounded"></div>
-                        <div className="h-8 bg-amber-100 rounded"></div>
-                      </div>
-                    </div>
+                    <img
+                      src={laptopImg}
+                      alt="Xtime Laptop"
+                      className="w-full h-auto"
+                    />
                   </div>
 
                   {/* Tablet */}
-                  <div className="w-32 h-44 bg-white rounded-xl shadow-xl overflow-hidden border border-neutral-200">
-                    <div className="p-2">
-                      <div className="h-2 bg-neutral-100 rounded mb-1"></div>
-                      <div className="h-20 bg-gradient-to-b from-primary-50 to-primary-100 rounded mb-1 flex items-center justify-center">
-                        <FontAwesomeIcon icon={faChartBar} className="text-primary-300 text-2xl" />
-                      </div>
-                      <div className="h-2 bg-neutral-100 rounded mb-1"></div>
-                      <div className="h-2 bg-neutral-100 rounded w-3/4"></div>
-                    </div>
+                  <div className="w-24 h-18 bg-white rounded-xl shadow-xl overflow-hidden border border-neutral-200">
+                    <img
+                      src={tabletImg}
+                      alt="Xtime Tablet"
+                      className="w-full h-auto"
+                    />
                   </div>
 
                   {/* Phone */}
                   <div className="w-16 h-32 bg-white rounded-xl shadow-xl overflow-hidden border border-neutral-200">
-                    <div className="p-1">
-                      <div className="h-1 bg-neutral-100 rounded mb-1"></div>
-                      <div className="h-16 bg-gradient-to-b from-accent/10 to-accent/20 rounded mb-1"></div>
-                      <div className="h-1 bg-neutral-100 rounded mb-1"></div>
-                      <div className="h-1 bg-neutral-100 rounded w-3/4"></div>
-                    </div>
+                    <img
+                      src={mobileImg}
+                      alt="Xtime Mobile"
+                      className="w-full h-auto"
+                    />
                   </div>
                 </div>
               </div>
@@ -374,16 +412,11 @@ const Xtime = () => {
             >
               <div className="relative">
                 {/* Person with devices illustration */}
-                <div className="w-80 h-80 bg-gradient-to-br from-primary-100 to-primary-50 rounded-full flex items-center justify-center">
-                  <div className="text-center">
-                    <FontAwesomeIcon icon={faUsers} className="text-primary-400 text-6xl mb-4" />
-                    <div className="flex gap-2 justify-center">
-                      <FontAwesomeIcon icon={faDesktop} className="text-primary-300 text-2xl" />
-                      <FontAwesomeIcon icon={faTabletAlt} className="text-primary-300 text-2xl" />
-                      <FontAwesomeIcon icon={faMobileAlt} className="text-primary-300 text-2xl" />
-                    </div>
-                  </div>
-                </div>
+                <img
+                  src={cloudSolutionImg}
+                  alt="Cloud Solution"
+                  className="w-full h-auto"
+                />
                 {/* Floating elements */}
                 <div className="absolute -top-4 -right-4 w-16 h-16 bg-white rounded-xl shadow-lg flex items-center justify-center">
                   <FontAwesomeIcon icon={faCloud} className="text-primary-500 text-2xl" />
@@ -477,40 +510,12 @@ const Xtime = () => {
             >
               <div className="relative">
                 {/* Tablet with Dashboard */}
-                <div className="w-96 h-64 bg-white rounded-2xl shadow-2xl border border-neutral-200 overflow-hidden">
-                  <div className="h-8 bg-neutral-100 flex items-center px-4">
-                    <span className="text-xs text-neutral-500">Dashboard</span>
-                  </div>
-                  <div className="p-4">
-                    <div className="grid grid-cols-3 gap-2 mb-3">
-                      <div className="h-16 bg-blue-100 rounded flex items-center justify-center">
-                        <div className="w-8 h-8 bg-blue-300 rounded"></div>
-                      </div>
-                      <div className="h-16 bg-amber-100 rounded flex items-center justify-center">
-                        <div className="w-8 h-8 bg-amber-300 rounded"></div>
-                      </div>
-                      <div className="h-16 bg-green-100 rounded flex items-center justify-center">
-                        <div className="w-8 h-8 bg-green-300 rounded"></div>
-                      </div>
-                    </div>
-                    <div className="h-2 bg-neutral-100 rounded mb-2"></div>
-                    <div className="h-2 bg-neutral-100 rounded w-3/4 mb-2"></div>
-                    <div className="h-2 bg-neutral-100 rounded w-1/2"></div>
-                  </div>
-                </div>
-
+                <img
+                  src={projectAnalysisImg}
+                  alt="Project Analysis"
+                  className="w-full h-auto"
+                />
                 {/* Phone Mockup */}
-                <div className="absolute -right-8 -bottom-4 w-20 h-36 bg-white rounded-xl shadow-xl border border-neutral-200 overflow-hidden">
-                  <div className="p-2">
-                    <div className="h-1 bg-neutral-100 rounded mb-1"></div>
-                    <div className="space-y-1">
-                      <div className="h-3 bg-green-100 rounded"></div>
-                      <div className="h-3 bg-blue-100 rounded"></div>
-                      <div className="h-3 bg-amber-100 rounded"></div>
-                      <div className="h-3 bg-red-100 rounded"></div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </motion.div>
           </div>
@@ -518,13 +523,13 @@ const Xtime = () => {
       </section>
 
       {/* Our Services to Xtime Products */}
-      <section className="py-16 md:py-24 bg-slate-50">
+      <section className="py-8 md:py-12 bg-slate-50">
         <div className="container-custom">
           <motion.div {...fadeInUp} className="mb-16">
             <h2 className="text-3xl md:text-4xl font-bold">
-              Our Services to the following <span className="text-primary-500">Products at Xtime</span>
+              Our Services for <span className="text-primary-500">Products at Xtime</span>
             </h2>
-            <div className="w-16 h-1 bg-accent mt-4"></div>
+            <div className="w-8 h-1 bg-accent mt-4"></div>
           </motion.div>
 
           {/* Xtime Spectrum Logo */}
@@ -534,7 +539,7 @@ const Xtime = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <span className="text-3xl font-bold text-primary-500">∞xtime <span className="text-neutral-400 font-normal">spectrum</span></span>
+            <img src={spectrumImg} alt="Xtime Spectrum" className="w-160 h-auto mx-auto" />
           </motion.div>
 
           {/* Product Cards */}
@@ -549,11 +554,10 @@ const Xtime = () => {
                 className="text-center"
               >
                 {/* Icon Circle */}
+
                 <div className="relative inline-block mb-6">
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full"></div>
-                  <div className={`w-20 h-20 rounded-full border-2 ${product.color} ${product.bgColor} flex items-center justify-center mx-auto`}>
-                    <FontAwesomeIcon icon={product.icon} className={`text-3xl ${product.color.split(' ')[1]}`} />
-                  </div>
+                  <img src={product.logo} alt={product.name} className="w-20 h-20 mb-6" />
                 </div>
 
                 {/* Product Name */}
@@ -603,7 +607,7 @@ const Xtime = () => {
                 <div className="flex-1 relative">
                   {/* Red dot */}
                   <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-3 h-3 bg-accent rounded-full"></div>
-                  
+
                   <div className="bg-neutral-100 rounded-xl p-6">
                     <p className="text-neutral-600">{step.text}</p>
                   </div>
@@ -624,7 +628,7 @@ const Xtime = () => {
         <div className="container-custom">
           <motion.div {...fadeInUp} className="mb-16">
             <h2 className="text-3xl md:text-4xl font-bold">
-              A peep into the <span className="text-primary-500">Scheduler product Workflow</span>
+              A peek into the <span className="text-primary-500">Scheduler product Workflow</span>
             </h2>
             <div className="w-16 h-1 bg-accent mt-4"></div>
           </motion.div>
@@ -642,24 +646,23 @@ const Xtime = () => {
               >
                 {/* Red dot connector */}
                 <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 bg-accent rounded-full z-10"></div>
-                
+
                 {/* Mockup Card */}
                 <div className="bg-white rounded-xl border border-neutral-200 p-4 shadow-sm">
                   {/* Progress indicator */}
                   <div className="flex items-center justify-between mb-4">
                     <span className="text-xs text-neutral-400">Schedule your service</span>
                   </div>
-                  
+
                   {/* Step indicators */}
                   <div className="flex items-center gap-2 mb-4">
                     {[1, 2, 3, 4].map((num) => (
                       <div
                         key={num}
-                        className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${
-                          num <= Math.ceil((index + 1) / 2)
-                            ? 'bg-primary-500 text-white'
-                            : 'bg-neutral-200 text-neutral-500'
-                        }`}
+                        className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${num <= Math.ceil((index + 1) / 2)
+                          ? 'bg-primary-500 text-white'
+                          : 'bg-neutral-200 text-neutral-500'
+                          }`}
                       >
                         {num}
                       </div>
@@ -789,18 +792,7 @@ const Xtime = () => {
               className="relative"
             >
               {/* Tablet mockup with car service interface */}
-              <div className="bg-white rounded-2xl shadow-2xl p-4 max-w-md mx-auto">
-                <div className="text-xs text-neutral-500 mb-2">SCHEDULE YOUR SERVICE</div>
-                <div className="flex gap-2 mb-4">
-                  <span className="px-3 py-1 bg-primary-100 text-primary-600 rounded text-xs">Log Me In</span>
-                  <span className="px-3 py-1 bg-neutral-100 text-neutral-600 rounded text-xs">Find Me</span>
-                  <span className="px-3 py-1 bg-neutral-100 text-neutral-600 rounded text-xs">I'm New Here</span>
-                  <span className="px-3 py-1 bg-neutral-100 text-neutral-600 rounded text-xs">I'm in a Hurry</span>
-                </div>
-                <div className="h-40 bg-gradient-to-b from-slate-200 to-slate-300 rounded-lg flex items-center justify-center">
-                  <FontAwesomeIcon icon={faCar} className="text-slate-400 text-4xl" />
-                </div>
-              </div>
+              <img src={cloudMigrationImg} alt="Tablet Mockup" className="w-full h-auto" />
             </motion.div>
           </div>
         </div>
@@ -814,88 +806,7 @@ const Xtime = () => {
               <span className="text-primary-500">Final Design</span>
             </h2>
             <div className="w-16 h-1 bg-accent mt-4"></div>
-          </motion.div>
-
-          {/* Multi-device showcase */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
-            <div className="flex flex-wrap items-end justify-center gap-8">
-              {/* Desktop/Tablet - Xtime Engage */}
-              <div className="relative">
-                <div className="w-80 h-52 bg-slate-800 rounded-t-xl p-2">
-                  <div className="h-full bg-white rounded overflow-hidden">
-                    <div className="h-6 bg-neutral-100 flex items-center px-2">
-                      <span className="text-[8px] text-neutral-500">Walk Around</span>
-                    </div>
-                    <div className="p-2 grid grid-cols-2 gap-2">
-                      <div className="h-20 bg-slate-100 rounded flex items-center justify-center">
-                        <FontAwesomeIcon icon={faCar} className="text-slate-300 text-2xl" />
-                      </div>
-                      <div className="space-y-1">
-                        <div className="h-3 bg-neutral-100 rounded"></div>
-                        <div className="h-3 bg-neutral-100 rounded w-3/4"></div>
-                        <div className="h-3 bg-primary-100 rounded"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-96 h-3 bg-slate-700 rounded-b-lg mx-auto"></div>
-                <div className="absolute -top-2 -right-2 flex items-center gap-2">
-                  <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span className="text-sm text-neutral-600">Xtime Engage</span>
-                </div>
-              </div>
-
-              {/* Laptop - Xtime Inspect */}
-              <div className="relative">
-                <div className="w-64 h-40 bg-slate-800 rounded-t-lg p-2">
-                  <div className="h-full bg-white rounded overflow-hidden">
-                    <div className="h-4 bg-neutral-100"></div>
-                    <div className="p-2">
-                      <div className="grid grid-cols-3 gap-1 mb-2">
-                        <div className="h-8 bg-green-100 rounded"></div>
-                        <div className="h-8 bg-blue-100 rounded"></div>
-                        <div className="h-8 bg-amber-100 rounded"></div>
-                      </div>
-                      <div className="h-2 bg-neutral-100 rounded"></div>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-72 h-2 bg-slate-600 rounded-b-lg mx-auto"></div>
-                <div className="absolute -top-2 -right-2 flex items-center gap-2">
-                  <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span className="text-sm text-neutral-600">Xtime Inspect</span>
-                </div>
-              </div>
-
-              {/* Phone - Xtime Schedule */}
-              <div className="relative">
-                <div className="w-24 h-48 bg-slate-800 rounded-2xl p-1">
-                  <div className="h-full bg-white rounded-xl overflow-hidden">
-                    <div className="h-4 bg-neutral-100 flex items-center justify-center">
-                      <div className="w-8 h-1 bg-neutral-300 rounded"></div>
-                    </div>
-                    <div className="p-2">
-                      <div className="h-2 bg-neutral-100 rounded mb-1"></div>
-                      <div className="h-2 bg-primary-100 rounded mb-2"></div>
-                      <div className="space-y-1">
-                        <div className="h-4 bg-green-50 rounded"></div>
-                        <div className="h-4 bg-blue-50 rounded"></div>
-                        <div className="h-4 bg-amber-50 rounded"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute -top-2 -right-2 flex items-center gap-2">
-                  <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  <span className="text-sm text-neutral-600">Xtime Schedule</span>
-                </div>
-              </div>
-            </div>
+            <img src={finalDesignImg} alt="Tablet Mockup" className="w-full h-auto" />
           </motion.div>
         </div>
       </section>
