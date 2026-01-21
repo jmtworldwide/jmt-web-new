@@ -43,7 +43,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-neutral-900 text-white">
+    <footer className="bg-neutral-300 text-white">
       {/* Newsletter Section */}
       <div className="bg-gradient-to-r from-primary-500 to-primary-600">
         <div className="container-custom py-12">
@@ -82,31 +82,36 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <Link to="/home" className="inline-block mb-6">
               <div className="flex items-center gap-2">
-                <div className="w-10 h-10 bg-gradient-to-br from-primary-50 to-primary-200 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-xl">
                   <img src={logoImg} alt="Logo" className="w-full h-full object-contain" />
                 </div>
-                <span className="font-display font-bold text-xl">
-                  JMT<span className="text-primary-400">.</span>
+                <span className="font-display font-bold text-xl text-neutral-900">
+                  JMT<span className="text-primary-400"> Worldwide LLC.</span>
                 </span>
               </div>
             </Link>
-            <p className="text-neutral-400 mb-6 max-w-sm leading-relaxed">
+            <p className="text-neutral-600 mb-6 max-w-sm leading-relaxed">
               Delivering innovative technology solutions that transform businesses
               and create meaningful digital experiences.
             </p>
 
             {/* Contact Info */}
             <div className="space-y-3 mb-6">
-              <a href="mailto:info@jmtworldwidellc.com" className="flex items-center gap-3 text-neutral-400 hover:text-white transition-colors">
+              <a href="mailto:info@jmtworldwidellc.com" className="flex items-center gap-3 text-neutral-600 hover:text-white transition-colors">
                 <IoMail className="text-primary-400" />
-                info@jmtworldwidellc.com
+                <a
+                  href="mailto:info@jmtworldwidellc.com?subject=Inquiry%20from%20JMT Website&body=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services."
+                  className="text-primary-600 hover:text-primary-700 transition-colors"
+                >
+                  info@jmtworldwidellc.com
+                </a>
               </a>
-              <a href="tel:+14084210793" className="flex items-center gap-3 text-neutral-400 hover:text-white transition-colors">
+              <a href="tel:+14084210793" className="flex items-center gap-3 text-neutral-600 hover:text-white transition-colors">
                 <IoCall className="text-primary-400" />
-                +1 (408) 421-0793
+                <span className="text-primary-600" href="tel:+14084210793">+1 (408) 421-0793</span>
               </a>
-              <div className="flex items-start gap-3 text-neutral-400">
-                <IoLocationSharp className="text-primary-400 mt-1 flex-shrink-0" />
+              <div className="flex items-start gap-3 text-neutral-600">
+                <IoLocationSharp className="text-primary-600 mt-1 flex-shrink-0" />
                 <span>San Francisco, CA, USA</span>
               </div>
             </div>
@@ -138,7 +143,7 @@ const Footer = () => {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-neutral-400 hover:text-white hover:translate-x-1 transition-all duration-200 inline-block"
+                    className="text-neutral-600 hover:text-white hover:translate-x-1 transition-all duration-200 inline-block"
                   >
                     {link.name}
                   </Link>
@@ -155,7 +160,7 @@ const Footer = () => {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-neutral-400 hover:text-white hover:translate-x-1 transition-all duration-200 inline-block"
+                    className="text-neutral-600 hover:text-white hover:translate-x-1 transition-all duration-200 inline-block"
                   >
                     {link.name}
                   </Link>
@@ -172,7 +177,7 @@ const Footer = () => {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-neutral-400 hover:text-white hover:translate-x-1 transition-all duration-200 inline-block"
+                    className="text-neutral-600 hover:text-white hover:translate-x-1 transition-all duration-200 inline-block"
                   >
                     {link.name}
                   </Link>

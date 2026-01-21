@@ -510,11 +510,7 @@ const Xtime = () => {
             >
               <div className="relative">
                 {/* Tablet with Dashboard */}
-                <img
-                  src={projectAnalysisImg}
-                  alt="Project Analysis"
-                  className="w-full h-auto"
-                />
+                <div className="flex justify-center"><img src={projectAnalysisImg} alt="Tablet Mockup" className="w-[800px] h-[450px] mt-4" /></div>
                 {/* Phone Mockup */}
               </div>
             </motion.div>
@@ -805,8 +801,8 @@ const Xtime = () => {
             <h2 className="text-3xl md:text-4xl font-bold">
               <span className="text-primary-500">Final Design</span>
             </h2>
-            <div className="w-16 h-1 bg-accent mt-4"></div>
-            <img src={finalDesignImg} alt="Tablet Mockup" className="w-full h-auto" />
+            <div className="w-16 h-1 bg-accent mt-4" style={{ display: "flex", justifyContent: "center" }}></div>
+            <div className="flex justify-center"><img src={finalDesignImg} alt="Tablet Mockup" className="w-[750px] h-[550px] mt-4" /></div>
           </motion.div>
         </div>
       </section>

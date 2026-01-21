@@ -55,7 +55,7 @@ const Header = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? 'bg-white/95 backdrop-blur-md shadow-soft py-3'
-          : 'bg-transparent py-5'
+          : 'bg-primary-50 py-5'
           }`}
       >
         <div className="container-custom">
@@ -67,11 +67,11 @@ const Header = () => {
                 whileTap={{ scale: 0.95 }}
                 className="flex items-center gap-2"
               >
-                <div className="w-10 h-10 bg-gradient-to-br from-primary-50 to-primary-200 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-xl">
                   <img src={logoImg} alt="Logo" className="w-full h-full object-contain" />
                 </div>
                 <span className="font-display font-bold text-xl text-neutral-900">
-                  JMT<span className="text-primary-400">.</span>
+                  JMT<span className="text-primary-400"> Worldwide LLC.</span>
                 </span>
               </motion.div>
             </Link>
