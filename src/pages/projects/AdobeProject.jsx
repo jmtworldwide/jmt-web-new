@@ -34,7 +34,6 @@ import {
   faStore,
   faLayerGroup
 } from '@fortawesome/free-solid-svg-icons'
-import { faAdobe } from '@fortawesome/free-brands-svg-icons'
 
 const AdobeProject = () => {
   const [activeTab, setActiveTab] = useState('about')
@@ -135,7 +134,7 @@ const AdobeProject = () => {
 
   // Technology Stack
   const techStack = [
-    { name: 'Adobe Campaign', icon: faAdobe },
+    { name: 'Adobe Campaign', icon: faLayerGroup },
     { name: 'Adobe Analytics', icon: faChartLine },
     { name: 'Adobe Experience', icon: faLayerGroup }
   ]

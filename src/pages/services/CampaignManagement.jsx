@@ -29,12 +29,9 @@ import {
   faSync
 } from '@fortawesome/free-solid-svg-icons'
 import {
-  faAdobe,
   faSalesforce,
   faHubspot,
-  faMailchimp,
-  faFigma,
-  faSketch
+  faFigma
 } from '@fortawesome/free-brands-svg-icons'
 
 const CampaignManagement = () => {
@@ -118,17 +115,17 @@ const CampaignManagement = () => {
       title: 'Design',
       icon: faPaintBrush,
       technologies: [
-        { name: 'Adobe Creative Cloud', icon: faAdobe },
+        { name: 'Adobe Creative Cloud', icon: faLayerGroup },
         { name: 'Figma', icon: faFigma },
-        { name: 'XD', icon: faAdobe },
-        { name: 'Dreamweaver', icon: faAdobe }
+        { name: 'XD', icon: faLayerGroup },
+        { name: 'Dreamweaver', icon: faLayerGroup }
       ]
     },
     implementation: {
       title: 'Implementation',
       icon: faCogs,
       technologies: [
-        { name: 'Adobe Campaign', icon: faAdobe },
+        { name: 'Adobe Campaign', icon: faLayerGroup },
         { name: 'Salesforce', icon: faSalesforce },
         { name: 'Marketo', icon: faChartLine },
         { name: 'HubSpot', icon: faHubspot }
